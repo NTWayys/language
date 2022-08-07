@@ -1,0 +1,111 @@
+// Colors
+@sakuraPink: #FCC9B9;
+@diamond: #B9ECFC;
+@japaneseBlue: #1C3563;
+
+// End of colors
+// import font
+@font-face {
+  font-family: 'KGothic';
+  src: url('./fonts/K-Gothic.ttf') format('truetype');
+}
+// end of import
+
+// Defaults
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+:root{
+  font-size: 2vmin;
+}
+body{
+  font-weight: 400;
+  font-family: 'KGothic', sans-serif;
+}
+a{
+  text-decoration: none;
+  color:@diamond;
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+// End of defaults
+
+
+// Navbar 
+.navbar{
+  background: @japaneseBlue;
+
+  .container{
+    &:extend(.stretch-page);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+
+    div {
+      color: @diamond;
+      display: flex;
+      justify-content: space-between;
+    }
+    .navItems{
+      a {
+        color: @sakuraPink;
+        padding-right: 1rem;
+        cursor: pointer;
+      }
+      #wordSearch{
+        border-radius: 10px 0 0 10px;
+        border-style: none;
+        text-indent: 0.5rem;
+        width: 5rem;
+      }
+      #submitBtn{
+        padding:0 0.3rem;
+        border-radius:0 10px 10px 0;
+        border-style: none;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+
+.loginPageDiv{
+  padding-top:2rem;
+  display: flex;
+  height: 50vh;
+  div{
+    height: 100%;
+    background:grey;
+    flex-grow: 1;
+    &:first-of-type{
+      max-width: 55%;
+      width: 55%;
+      min-width: 50%;
+    }
+    &:nth-of-type(2){
+      border-left: 1px solid red;
+      flex-grow: 1;
+    }
+  }
+
+  .login-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+    .form-username,
+    .form-password{
+      text-indent: 0.5rem;
+    }
+    input,button{
+      border-style: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+    }
+  }
+}

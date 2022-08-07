@@ -1,12 +1,28 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function App() {
-  return (
-    <>
-      <h1>React Working</h1>
-    </>
-  );
+import { AuthProvider } from "./pages/context/AuthContext";
+
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import { PrivateRoute } from "./pages/components/PrivateRoute";
+import Navbar from "./pages/components/Navbar";
+
+function App() {
+	return (
+		<>
+			<BrowserRouter>
+				<AuthProvider>
+					<Navbar />
+					<Routes>
+						<Route path="" exact element={<HomePage />} />
+						<Route path="login/" element={<LoginPage />} />
+					</Routes>
+				</AuthProvider>{" "}
+			</BrowserRouter>
+		</>
+	);
 }
 
-render(<App />, document.getElementById("appRoot"));
+ReactDOM.createRoot(document.getElementById("appRoot")).render(<App />);

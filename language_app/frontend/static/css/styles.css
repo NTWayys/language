@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'KGothic';
+  src: url('./fonts/K-Gothic.ttf') format('truetype');
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 2vmin;
+}
+body {
+  font-weight: 400;
+  font-family: 'KGothic', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #B9ECFC;
+}
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.navbar {
+  background: #1C3563;
+}
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.navbar .container div {
+  color: #B9ECFC;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .container .navItems a {
+  color: #FCC9B9;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+.navbar .container .navItems #wordSearch {
+  border-radius: 10px 0 0 10px;
+  border-style: none;
+  text-indent: 0.5rem;
+  width: 5rem;
+}
+.navbar .container .navItems #submitBtn {
+  padding: 0 0.3rem;
+  border-radius: 0 10px 10px 0;
+  border-style: none;
+  font-size: 0.75rem;
+}
+.loginPageDiv {
+  padding-top: 2rem;
+  display: flex;
+  height: 50vh;
+}
+.loginPageDiv div {
+  height: 100%;
+  background: grey;
+  flex-grow: 1;
+}
+.loginPageDiv div:first-of-type {
+  max-width: 55%;
+  width: 55%;
+  min-width: 50%;
+}
+.loginPageDiv div:nth-of-type(2) {
+  border-left: 1px solid red;
+  flex-grow: 1;
+}
+.loginPageDiv .login-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.loginPageDiv .login-form .form-username,
+.loginPageDiv .login-form .form-password {
+  text-indent: 0.5rem;
+}
+.loginPageDiv .login-form input,
+.loginPageDiv .login-form button {
+  border-style: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
