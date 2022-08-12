@@ -12,9 +12,9 @@ export default function Navbar() {
 						<NavLink to="/">ASDFGHJKL</NavLink>
 					</div>
 					<div className="navItems">
-						<NavLink to="learn/hiragana/">Hiragana</NavLink>
-						<NavLink to="learn/katakana/">Katakana</NavLink>
-						<NavLink to="learn/kanji/">Kanji</NavLink>
+						<NavLink to="japanese/hiragana/">Hiragana</NavLink>
+						<NavLink to="japanese/katakana/">Katakana</NavLink>
+						<NavLink to="japanese/kanji/">Kanji</NavLink>
 						<input id="wordSearch" type="text" />
 						<button id="submitBtn">Search</button>
 					</div>

@@ -3,10 +3,5 @@ import AuthContext from "./context/AuthContext";
 
 export default function HomePage() {
 	let { user } = useContext(AuthContext);
-	return (
-		<>
-			<h1>homepage </h1>
-			{user && <h3>Hey {user.username}</h3>}
-		</>
-	);
+	return <>{user && <h1>this is: {user.username}</h1>}</>;
 }
