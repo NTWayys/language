@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from django.http import JsonResponse
+from .endpoints import Hiragana
 
-def main(request):
-    return HttpResponse("<h1>Working</h1>")
+
+def hiragana(request):
+    return JsonResponse(Hiragana.Dict) 
