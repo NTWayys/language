@@ -5,6 +5,8 @@ import jwt_decode from "jwt-decode";
 const AuthContext = createContext();
 export default AuthContext;
 
+
+
 export const AuthProvider = ({ children }) => {
 	let [authTokens, setAuthTokens] = useState(() =>
 		localStorage.getItem("authTokens")
@@ -22,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
 	let loginUser = async (e) => {
 		e.preventDefault();
-		let response = await fetch("http://localhost:8000/api/account/token/", {
+		let response = await fetch("/api/account/token/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -52,33 +54,29 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	let updateToken = async () => {
-		console.log("update called");
-		let response = await fetch(
-			"http://localhost:8000/api/account/token/refresh/",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					refresh: authTokens.refresh,
-				}),
-			}
-		);
+		let response = await fetch("/api/account/token/refresh/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				refresh: authTokens.refresh,
+			}),
+		});
 
 		let data = await response.json();
 		if (response.status === 200) {
 			setAuthTokens(data);
 			setUser(jwt_decode(data.access));
 			localStorage.setItem("authTokens", JSON.stringify(data));
-			navigate("/");
 		} else {
 			logoutUser();
 		}
 	};
+	
 
 	useEffect(() => {
-		let fourandhalfmins = 280000;
+		const fourandhalfmins = 240000;
 		let interval = setInterval(() => {
 			if (authTokens) {
 				updateToken();
@@ -86,9 +84,16 @@ export const AuthProvider = ({ children }) => {
 		}, fourandhalfmins);
 		return () => clearInterval(interval);
 	}, [authTokens, loading]);
-
+	useEffect(() =>{
+		updateToken()
+	},[])
+	
+	
 	let contextData = {
 		user: user,
+		loading:loading,
+		authTokens: authTokens,
+		updateToken:updateToken,
 		loginUser: loginUser,
 		logoutUser,
 	};
@@ -97,3 +102,4 @@ export const AuthProvider = ({ children }) => {
 		<AuthContext.Provider value={contextData}> {children}</AuthContext.Provider>
 	);
 };
+

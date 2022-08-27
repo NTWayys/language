@@ -1,10 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Card from "./components/Card";
+import AuthContext  from "./context/AuthContext";
 
-export default function HiraganaPage() {
+export default function HiraganaPage(props) {
+	console.log(props.userCompleted)
+	
+	let { user, authTokens } = useContext(AuthContext);
+	
 	const [renderedHiraganaList, setRenderedHiraganaList] = useState("");
+
+	useEffect(() => {
+		fetch(`/api/account/items/update/${props.userCompleted.id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${authTokens && authTokens.access}`,
+			},
+			body: JSON.stringify({
+				body: props.userCompleted.body,
+			}),
+		});
+		try {
+			getCharacters();
+		} catch {
+			getCharacters();
+			console.log("fails");
+		}
+	}, [props.userCompleted]);
+
+	
+
+	
+
 	let getCharacters = async () => {
-		let response = await fetch("http://127.0.0.1:8000/api/hiragana");
+		let response = await fetch("/api/hiragana");
 		let data = await response.json();
 		const hiraganaList = data.hiragana;
 
@@ -12,7 +41,10 @@ export default function HiraganaPage() {
 			item.table.forEach((element, index) => {
 				item.table[index] = (
 					<Card
-						key={element.id}
+						key={element.uniqueID}
+						onchange={props.userCompletedItem}
+						id={element.uniqueID}
+						completedChars={props.userCompleted.body}
 						character={element.character}
 						romaji={element.romaji}
 						referenceWords={element.referenceWords}
@@ -30,10 +62,6 @@ export default function HiraganaPage() {
 
 		setRenderedHiraganaList(returnhiraganaList);
 	};
-
-	useEffect(() => {
-		getCharacters();
-	}, []);
 
 	return (
 		<div className="container hiragana-page">

@@ -103,23 +103,47 @@ a {
   font-size: 3rem;
 }
 .hiragana-page .character-container {
+  padding: 1rem 0 2rem;
   display: flex;
   justify-content: space-between;
 }
 .hiragana-page .character-container .character-card {
-  padding: 1rem;
-  flex-grow: 1;
-  max-width: 19%;
+  width: 19%;
+  max-width: 12rem;
+  min-height: 16.4rem;
   background-repeat: no-repeat;
   background-size: cover;
   color: #B9ECFC;
   border-radius: 10px;
+  text-align: center;
+  position: relative;
+  border: 0.3rem solid #1C3563;
+}
+.hiragana-page .character-container .character-card h3 {
+  margin: 0;
+  color: #1C3563;
+  transform: translateY(-50%);
+  display: inline-block;
+  background: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  border: 0.3rem solid #1C3563;
 }
 .hiragana-page .character-container .character-card h2 {
-  font-size: 10rem;
+  margin: 0;
+  font-size: 8rem;
 }
-.hiragana-page .character-container .character-card p {
+.hiragana-page .character-container .character-card .wordList {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
+  background: #1C3563;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .hiragana-page hr {
   height: 0.4rem;

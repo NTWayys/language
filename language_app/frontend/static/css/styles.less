@@ -127,24 +127,48 @@ a{
   }
   
 .character-container{
+  padding:1rem 0 2rem;
   display: flex;
   justify-content: space-between;
 
   .character-card {
-    padding: 1rem;
-    flex-grow: 1;
-    max-width: 19%;
+    width: 19%;
+    max-width: 12rem;
+    min-height: 16.4rem;
     background-repeat: no-repeat;
     background-size: cover;
     color: @diamond;
     border-radius: 10px;
-
+    text-align: center;
+    position: relative;
+    border: 0.3rem solid @japaneseBlue;
+    h3 {
+        margin: 0;
+        color: @japaneseBlue;
+        transform: translateY(-50%);
+        display: inline-block;
+        background: white;
+        padding: 0.1rem 0.4rem;
+        border-radius: 20px;
+        font-size: 1.8rem;
+        border: 0.3rem solid @japaneseBlue;
+    
+      }
     h2 {
-      font-size: 10rem;
+      margin:0;
+      font-size: 8rem;
     }
 
-    p {
+    .wordList {
+      position: absolute;
+      bottom: 0;
+      margin:0;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
+      background:@japaneseBlue;
+      width:100%;
+      display: flex;
+      justify-content: center;
     }
   }
 }
